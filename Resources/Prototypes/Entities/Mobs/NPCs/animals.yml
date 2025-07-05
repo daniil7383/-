@@ -2778,7 +2778,7 @@
         melee:
           reagents:
             - ReagentId: Laughter
-              Quantity: "50"
+              Quantity: 50
     - type: MeleeChemicalInjector
       solution: melee
       transferAmount: 2
