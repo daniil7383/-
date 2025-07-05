@@ -2768,10 +2768,21 @@
       angle: 0
       animation: WeaponArcBite
       soundHit:
-        path: /Audio/Effects/bite.ogg
+        collection: ClownSpiderBiteSound #Sunrise edit
       damage:
         types:
           Piercing: 8
+    # Sunrise edit start
+    - type: SolutionContainerManager
+      solutions:
+        melee:
+          reagents:
+            - ReagentId: Laughter
+              Quantity: "50"
+    - type: MeleeChemicalInjector
+      solution: melee
+      transferAmount: 2
+    # Sunrise edit end
     - type: FootstepModifier
       footstepSoundCollection:
         collection: FootstepClownFast
@@ -3324,7 +3335,7 @@
     factions:
     - Syndicate
   - type: Access
-    tags: 
+    tags:
     - NuclearOperative
     - SyndicateAgent
   - type: MeleeWeapon
