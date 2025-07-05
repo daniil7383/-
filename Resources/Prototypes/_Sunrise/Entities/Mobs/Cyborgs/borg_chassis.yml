@@ -212,6 +212,7 @@
     - Chapel
     - Hydroponics
     - Atmospherics
+    - CentralCommand
   - type: RandomMetadata
     nameSegments: [NamesBorg]
   - type: MovementSpeedModifier
