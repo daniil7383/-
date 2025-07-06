@@ -94,3 +94,16 @@
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/stamps.rsi
     state: stamp-veto
+
+- type: entity
+  name: Redo rubber stamp
+  parent: RubberStampBase
+  id: RubberStampRedo
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-redo
+    stampedColor: "#1A237EFF"
+    stampState: "paper_stamp-redo"
+  - type: Sprite
+    sprite: _Sunrise/Objects/Misc/stamps.rsi
+    state: stamp-redo

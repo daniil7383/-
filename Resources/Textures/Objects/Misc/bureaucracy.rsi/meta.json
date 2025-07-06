@@ -242,6 +242,9 @@
     },
     {
       "name": "paper_stamp-veto"
+    },
+    {
+      "name": "paper_stamp-redo"
     }
   ]
 }

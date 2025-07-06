@@ -18,3 +18,5 @@ ent-RubberStampNpt = Head of Prison rubber stamp
     .desc = { ent-RubberStampBase.desc }
 ent-RubberStampVeto = VETO stamp
     .desc = { ent-RubberStampBase.desc }
+ent-RubberStampRedo = Redo stamp
+    .desc = { ent-RubberStampBase.desc }
