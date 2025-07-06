@@ -67,7 +67,7 @@
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/stamps.rsi
     state: stamp-adj
-    
+
 - type: entity
   name: Head of Prison rubber stamp
   parent: RubberStampBase
@@ -81,3 +81,16 @@
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/stamps.rsi
     state: stamp-npt
+
+- type: entity
+  name: VETO rubber stamp
+  parent: RubberStampBase
+  id: RubberStampVeto
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-veto
+    stampedColor: "#D32F2FFF"
+    stampState: "paper_stamp-veto"
+  - type: Sprite
+    sprite: _Sunrise/Objects/Misc/stamps.rsi
+    state: stamp-veto
