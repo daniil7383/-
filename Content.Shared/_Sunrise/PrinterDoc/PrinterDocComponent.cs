@@ -30,7 +30,7 @@ public sealed partial class PrinterDocComponent : Component
     public string Solution = string.Empty;
 
     [DataField]
-    public int IncCost = 5;
+    public int IncCost = 1;
 
     [DataField]
     public int PaperCost = 100;

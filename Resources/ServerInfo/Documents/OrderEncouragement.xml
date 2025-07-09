@@ -1,11 +1,11 @@
 <Document>
-[tex path="/Textures/_Sunrise/Paper/nanotrasen_form_heade_cmd.png" scale=1]
+[tex path="/Textures/_Sunrise/Paper/nanotrasen_form_header_cmd.png" scale=1]
 
 
 [bold]Форма НТ/КОМ-ПЩРН[/bold]
 [head=2]Приказ о поощрении[/head]
 
-[italic]Время и дата:[/italic]
+[italic]Время от начала смены и дата: {timeString}[/italic]
 
 Составитель документа:
 Должность составителя:

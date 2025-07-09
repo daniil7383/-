@@ -13,6 +13,7 @@ using Content.Shared.Materials;
 using Robust.Shared.Containers;
 using Robust.Shared.ContentPack;
 using System.Text.RegularExpressions;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Sunrise.PrinterDoc;
 
@@ -25,12 +26,16 @@ public sealed class PrinterDocSystem : EntitySystem
     [Dependency] private readonly ItemSlotsSystem _itemSlotsSystem = default!;
     [Dependency] private readonly MaterialStorageSystem _materialStorage = default!;
     [Dependency] private readonly IResourceManager _resourceManager = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
+    private TimeSpan _roundStartTime;
     private readonly Dictionary<string, string> _docCache = new();
 
     public override void Initialize()
     {
         base.Initialize();
+        _roundStartTime = _timing.CurTime;
+
         SubscribeLocalEvent<PrinterDocComponent, BoundUIOpenedEvent>(OnUiOpened);
         SubscribeLocalEvent<PrinterDocComponent, PrinterDocPrintMessage>(OnPrintMessage);
         SubscribeLocalEvent<PrinterDocComponent, PrinterDocCopyMessage>(OnCopyMessage);
@@ -142,6 +147,12 @@ public sealed class PrinterDocSystem : EntitySystem
 
         if (!_docCache.TryGetValue(templateId, out var content))
             return false;
+
+        var date = DateTime.UtcNow.AddHours(3).AddYears(1000).ToString("dd.MM.yyyy");
+        var shift = _timing.CurTime - _roundStartTime;
+        var timeString = $"{shift:hh\\:mm} {date}";
+
+        content = content.Replace("{timeString}", timeString);
 
         _paperSystem.SetContent((paper, paperComp), content);
         return true;
