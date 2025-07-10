@@ -199,6 +199,7 @@
     unlitIdleState: unlit
     unlitRunningState: unlit-building
     staticPacks:
+    - PaperStatic #Sunrise-edit
     - ChemistryStatic
     - SurgeryStatic
     dynamicPacks:

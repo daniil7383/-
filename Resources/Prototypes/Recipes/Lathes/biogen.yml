@@ -361,4 +361,12 @@
   completetime: 15
   materials:
     Biomass: 16
+
+- type: latheRecipe
+  id: BioSheetOfficePaper
+  result: SheetOfficePaper1
+  completetime: 1
+  materials:
+    Biomass: 2
+
 # Sunrise-End

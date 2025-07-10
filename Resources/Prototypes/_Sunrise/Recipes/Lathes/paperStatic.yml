@@ -1,0 +1,6 @@
+- type: latheRecipe
+  id: ProtoSheetOfficePaper
+  result: SheetOfficePaper1
+  completetime: 1
+  materials:
+    Wood: 50
