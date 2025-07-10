@@ -14,6 +14,9 @@ using Robust.Shared.Containers;
 using Robust.Shared.ContentPack;
 using System.Text.RegularExpressions;
 using Robust.Shared.Timing;
+using Content.Server.GameTicking.Events;
+using Content.Shared._Sunrise.SunriseCCVars;
+using Robust.Shared.Configuration;
 
 namespace Content.Server._Sunrise.PrinterDoc;
 
@@ -27,15 +30,14 @@ public sealed class PrinterDocSystem : EntitySystem
     [Dependency] private readonly MaterialStorageSystem _materialStorage = default!;
     [Dependency] private readonly IResourceManager _resourceManager = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-
-    private TimeSpan _roundStartTime;
+    [Dependency] private readonly IConfigurationManager _configManager = default!;    private TimeSpan _roundStartTime;
     private readonly Dictionary<string, string> _docCache = new();
 
     public override void Initialize()
     {
         base.Initialize();
-        _roundStartTime = _timing.CurTime;
 
+        SubscribeLocalEvent<RoundStartingEvent>(OnRoundStart);
         SubscribeLocalEvent<PrinterDocComponent, BoundUIOpenedEvent>(OnUiOpened);
         SubscribeLocalEvent<PrinterDocComponent, PrinterDocPrintMessage>(OnPrintMessage);
         SubscribeLocalEvent<PrinterDocComponent, PrinterDocCopyMessage>(OnCopyMessage);
@@ -47,6 +49,11 @@ public sealed class PrinterDocSystem : EntitySystem
         SubscribeLocalEvent<PrinterDocComponent, StrappedEvent>(OnStasisStrapped);
         SubscribeLocalEvent<PrinterDocComponent, UnstrappedEvent>(OnStasisUnstrapped);
         CacheAllDocuments();
+    }
+
+    private void OnRoundStart(RoundStartingEvent ev)
+    {
+        _roundStartTime = _timing.CurTime;
     }
 
     private void CacheAllDocuments()
@@ -148,7 +155,10 @@ public sealed class PrinterDocSystem : EntitySystem
         if (!_docCache.TryGetValue(templateId, out var content))
             return false;
 
-        var date = DateTime.UtcNow.AddHours(3).AddYears(1000).ToString("dd.MM.yyyy");
+        var date = DateTime.UtcNow
+            .AddHours(_configManager.GetCVar(SunriseCCVars.PrinterDocTimeOffsetHours))
+            .AddYears(_configManager.GetCVar(SunriseCCVars.PrinterDocYearOffset))
+            .ToString("dd.MM.yyyy");
         var shift = _timing.CurTime - _roundStartTime;
         var timeString = $"{shift:hh\\:mm} {date}";
 
