@@ -88,6 +88,9 @@
   id: CartridgeHeavyRifleR
 
 - type: Tag
+  id: CartridgeAR2
+
+- type: Tag
   id: FireThrowerBall
 
 - type: Tag
@@ -217,6 +220,9 @@
 
 - type: Tag
   id: MagazineMP7
+
+- type: Tag
+  id: MagazineAR2
 
 - type: Tag
   id: MagazineMP5
