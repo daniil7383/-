@@ -462,6 +462,7 @@
     stateDoorOpen: shotguncase_open
     stateDoorClosed: shotguncase_door
   - type: AccessReader
+  - type: StorageManifestLabel # Sunrise - edit
   - type: Construction
     graph: GunSafe
     node: done
