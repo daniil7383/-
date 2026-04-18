@@ -1,3 +1,4 @@
+using Content.Shared._Sunrise.Misc;
 using Content.Shared.Xenoarchaeology.Artifact.XAE.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
@@ -14,6 +15,11 @@ public sealed class XAERemoveCollisionSystem : BaseXAESystem<XAERemoveCollisionC
     /// <inheritdoc />
     protected override void OnActivated(Entity<XAERemoveCollisionComponent> ent, ref XenoArtifactNodeActivatedEvent args)
     {
+        // Sunrise-start чтобы игроки не могли сделать себе тело, которое проходит сквозь стенки
+        if (HasComp<XenoArtifactThrowingAutoInjectorMarkComponent>(args.Artifact.Owner))
+            return;
+        // Sunrise-end
+
         if (!TryComp<FixturesComponent>(args.Artifact, out var fixtures))
             return;
 
