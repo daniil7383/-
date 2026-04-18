@@ -16,7 +16,7 @@ public sealed class XAERemoveCollisionSystem : BaseXAESystem<XAERemoveCollisionC
     protected override void OnActivated(Entity<XAERemoveCollisionComponent> ent, ref XenoArtifactNodeActivatedEvent args)
     {
         // Sunrise-start чтобы игроки не могли сделать себе тело, которое проходит сквозь стенки
-        if (HasComp<XenoArtifactThrowingAutoInjectorMarkComponent>(args.Artifact.Owner))
+        if (HasComp<XenoArtifactThrowingAutoInjectorMarkComponent>(args.Artifact))
             return;
         // Sunrise-end
 
