@@ -1,4 +1,5 @@
 namespace Content.Server.Gatherable.Components;
+
 public sealed partial class GatheringProjectileComponent
 {
     /// <summary>
